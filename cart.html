@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - ShopKart Demo</title>
+
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fk-header">
+        <div class="header-container">
+            <a href="home.html" class="brand-logo">
+                <span class="logo-main">ShopKart</span>
+                <span class="logo-sub">Demo Store</span>
+            </a>
+
+            <div class="header-center-title">
+                <h2>Order Summary</h2>
+            </div>
+
+            <div class="header-secure">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Demo checkout, no real payments</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= CART CONTAINER ================= -->
+    <main class="cart-page-body">
+
+        <!-- Active Delivery Address Bar -->
+        <div class="delivery-address-card" id="addressCard">
+            <div class="addr-info">
+                <span class="addr-tag">Deliver to:</span>
+                <strong id="displayCustomerName">Demo User, 000000</strong>
+                <span class="addr-detail" id="displayAddress">Click "Change" to add a sample delivery address (demo only)</span>
+            </div>
+            <button class="btn-change-addr" onclick="openAddressModal()">Change</button>
+        </div>
+
+        <div class="cart-layout" id="cartLayout">
+            <!-- Left: Cart Items List -->
+            <div class="cart-left" id="cartItems">
+                <!-- Dynamically injected -->
+            </div>
+
+            <!-- Right: Sticky Price Details Card -->
+            <div class="cart-right" id="priceDetails">
+                <!-- Dynamically injected -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================= ADDRESS EDIT MODAL ================= -->
+    <div class="modal-backdrop" id="addressModal" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Delivery Address</h3>
+                <button onclick="closeAddressModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p style="font-size:12px; color:#b26a00; background:#fff4e0; border-radius:6px; padding:8px; margin:0 0 10px;">
+                Demo project: please enter sample details, not your real address or mobile number.
+            </p>
+            <form id="addressForm" onsubmit="saveAddress(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="inputName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>10-digit Mobile *</label>
+                        <input type="tel" id="inputMobile" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pincode *</label>
+                        <input type="text" id="inputPincode" maxlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City / District *</label>
+                        <input type="text" id="inputCity" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Street Address, House No. *</label>
+                    <textarea id="inputStreet" rows="2" required></textarea>
+                </div>
+                <button type="submit" class="btn-save-addr">Save & Deliver Here</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= PAYMENT & CHECKOUT MODAL ================= -->
+    <div class="modal-backdrop" id="checkoutModal" style="display:none;">
+        <div class="modal-box checkout-box">
+            <div class="modal-header">
+                <h3>Select Payment Option (Demo)</h3>
+                <button onclick="closeCheckoutModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p style="font-size:12px; color:#b26a00; background:#fff4e0; border-radius:6px; padding:8px; margin:0 0 10px;">
+                No real payment is taken. Do not enter real card or UPI details.
+            </p>
+            <div class="payment-options">
+                <label class="pay-option">
+                    <input type="radio" name="paymentMethod" value="Cash on Delivery" checked>
+                    <div class="pay-label">
+                        <strong><i class="fa-solid fa-hand-holding-dollar"></i> Cash on Delivery (COD)</strong>
+                        <span>Sample option for the demo</span>
+                    </div>
+                </label>
+
+                <label class="pay-option">
+                    <input type="radio" name="paymentMethod" value="UPI (Demo)">
+                    <div class="pay-label">
+                        <strong><i class="fa-solid fa-mobile-screen"></i> UPI (Demo)</strong>
+                        <span>Sample option, no real payment</span>
+                    </div>
+                </label>
+
+                <label class="pay-option">
+                    <input type="radio" name="paymentMethod" value="Card (Demo)">
+                    <div class="pay-label">
+                        <strong><i class="fa-solid fa-credit-card"></i> Card (Demo)</strong>
+                        <span>Sample option, no real payment</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="checkout-footer">
+                <div class="pay-total-row">
+                    <span>Total Payable:</span>
+                    <strong id="modalPayableAmount">₹0</strong>
+                </div>
+                <button class="btn-confirm-order" id="btnConfirmOrder" onclick="processOrderPlacement()">
+                    CONFIRM & PLACE ORDER
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="fk-footer" style="margin-top:auto;">
+        <div class="footer-bottom-strip">
+            <div class="strip-item"><i class="fa-solid fa-shield-halved"></i> <span>Demo checkout, no real payments</span></div>
+            <div class="strip-item"><i class="fa-solid fa-arrow-rotate-left"></i> <span>Sample return policy</span></div>
+            <div class="strip-item"><i class="fa-solid fa-award"></i> <span>Demo products only</span></div>
+            <div class="strip-copy">© 2026 ShopKart Demo - Learning project</div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+
+</body>
+</html>

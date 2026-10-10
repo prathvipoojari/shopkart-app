@@ -1,0 +1,1368 @@
+/* ==========================================================
+   SHOPKART - AUTHENTIC FLIPKART DESIGN SYSTEM
+   ========================================================== */
+
+:root {
+    --fk-blue: #2874f0;
+    --fk-dark-blue: #1c5fc4;
+    --fk-yellow: #ffe500;
+    --fk-orange: #fb641b;
+    --fk-dark-orange: #e0520b;
+    --fk-cart-yellow: #ff9f00;
+    --fk-green: #388e3c;
+    --fk-bg: #f1f3f6;
+    --fk-text: #212121;
+    --fk-secondary-text: #878787;
+    --fk-border: #e0e0e0;
+    --fk-card-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    --fk-hover-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--fk-bg);
+    color: var(--fk-text);
+    line-height: 1.4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================
+   1. FLIPKART HEADER
+   ========================================================== */
+.fk-header {
+    background-color: var(--fk-blue);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Brand Logo */
+.brand-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.logo-main {
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -0.4px;
+}
+
+.logo-sub {
+    color: #f0f0f0;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.plus-text {
+    color: var(--fk-yellow);
+    font-weight: 700;
+}
+
+.star-icon {
+    font-size: 9px;
+    color: var(--fk-yellow);
+}
+
+/* Search Bar */
+.search-container {
+    flex: 1;
+    position: relative;
+    max-width: 580px;
+}
+
+.search-form {
+    display: flex;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #111;
+}
+
+.search-form input::placeholder {
+    color: #878787;
+}
+
+.search-form button {
+    background: white;
+    border: none;
+    padding: 0 16px;
+    color: var(--fk-blue);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Search Auto-Suggest Dropdown */
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 0 0 4px 4px;
+    z-index: 1050;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f8f8f8;
+    font-size: 13px;
+    color: #333;
+}
+
+.suggestion-item:hover {
+    background-color: #f1f3f6;
+    color: var(--fk-blue);
+}
+
+/* Header Navigation Actions */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Login Button & Guest Dropdown */
+.nav-account-slot {
+    position: relative;
+}
+
+.fk-login-btn {
+    background: white;
+    color: var(--fk-blue);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 6px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #dbdbdb;
+    transition: background 0.2s;
+}
+
+.fk-login-btn:hover {
+    background: #fafafa;
+}
+
+/* Account Dropdown */
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 10px 0;
+    display: none;
+    z-index: 1020;
+}
+
+.account-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid white;
+}
+
+.nav-account-slot:hover .account-dropdown {
+    display: block;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #212121;
+}
+
+.signup-link {
+    color: var(--fk-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.account-dropdown hr {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 6px 0;
+}
+
+.account-dropdown a, .account-dropdown button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: #212121;
+    text-decoration: none;
+    font-size: 14px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.account-dropdown a:hover, .account-dropdown button:hover {
+    background-color: #f5f5f5;
+    color: var(--fk-blue);
+}
+
+/* User Logged In Pill */
+.user-logged-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 6px 12px;
+}
+
+.user-logged-btn i.caret-icon {
+    font-size: 10px;
+}
+
+/* Seller Link & More Dropdown */
+.seller-link {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.nav-dropdown-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-trigger {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.more-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 8px 0;
+    display: none;
+    z-index: 1020;
+}
+
+.nav-dropdown-item:hover .more-dropdown {
+    display: block;
+}
+
+.more-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: #212121;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.more-dropdown a:hover {
+    background-color: #f5f5f5;
+    color: var(--fk-blue);
+}
+
+/* Header Cart Button */
+.cart-btn-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.cart-badge-wrap {
+    position: relative;
+    font-size: 17px;
+}
+
+#cartCount {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--fk-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+}
+
+/* ==========================================================
+   2. CATEGORY BAR
+   ========================================================== */
+.category-nav {
+    background: white;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.category-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.category-nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    gap: 15px;
+}
+
+.cat-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    text-align: center;
+    min-width: 80px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.cat-pill:hover {
+    color: var(--fk-blue);
+    transform: translateY(-2px);
+}
+
+.cat-pill.active {
+    color: var(--fk-blue);
+    font-weight: 700;
+}
+
+.cat-icon-wrap {
+    font-size: 26px;
+}
+
+.cat-pill span {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ==========================================================
+   3. HERO BANNER CAROUSEL
+   ========================================================== */
+.page-body {
+    max-width: 1240px;
+    width: 100%;
+    margin: 12px auto;
+    padding: 0 10px;
+    flex: 1;
+}
+
+.banner-carousel-wrap {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #2b3a4a;
+    box-shadow: var(--fk-card-shadow);
+}
+
+.banner-slide {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay-info {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 600px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.sale-tag {
+    background: var(--fk-orange);
+    color: white;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.banner-overlay-info h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.banner-overlay-info p {
+    font-size: 15px;
+    margin-bottom: 16px;
+    opacity: 0.95;
+}
+
+.shop-banner-btn {
+    background: var(--fk-yellow);
+    color: #111;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: transform 0.15s;
+}
+
+.shop-banner-btn:hover {
+    transform: scale(1.04);
+}
+
+.banner-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #333;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+.banner-arrow:hover {
+    background: white;
+    color: var(--fk-blue);
+}
+
+.prev-arrow {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.next-arrow {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.banner-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.banner-dots .dot {
+    width: 9px;
+    height: 9px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.banner-dots .dot.active {
+    background: white;
+    width: 22px;
+    border-radius: 6px;
+}
+
+/* ==========================================================
+   4. TRUST STRIP
+   ========================================================== */
+.trust-strip {
+    background: white;
+    padding: 16px 20px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-bottom: 16px;
+    box-shadow: var(--fk-card-shadow);
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.trust-item i {
+    font-size: 26px;
+    color: var(--fk-blue);
+}
+
+.trust-item strong {
+    display: block;
+    font-size: 13px;
+    color: #212121;
+}
+
+.trust-item span {
+    font-size: 12px;
+    color: #878787;
+}
+
+/* ==========================================================
+   5. DEAL SECTIONS (FLIPKART 2-COLUMN LAYOUT)
+   ========================================================== */
+.deal-section {
+    background: white;
+    border-radius: 4px;
+    box-shadow: var(--fk-card-shadow);
+    display: flex;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+/* Left Featured Header Card */
+.deal-card-left {
+    width: 230px;
+    flex-shrink: 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.electronics-bg {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.mobiles-bg {
+    background: linear-gradient(135deg, #093028, #237a57);
+}
+
+.fashion-bg {
+    background: linear-gradient(135deg, #870000, #190a05);
+}
+
+.appliances-bg {
+    background: linear-gradient(135deg, #4b1248, #f0c27b);
+}
+
+.deal-info h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.deal-info p {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.view-all-btn {
+    background: var(--fk-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+.view-all-btn:hover {
+    background: var(--fk-dark-blue);
+}
+
+/* Right Scrollable Product List */
+.deal-card-right {
+    flex: 1;
+    overflow-x: auto;
+    padding: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.horizontal-scroll {
+    display: flex;
+    gap: 16px;
+}
+
+/* Flipkart Product Card */
+.fk-product-card {
+    min-width: 200px;
+    max-width: 220px;
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 14px;
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.fk-product-card:hover {
+    box-shadow: var(--fk-hover-shadow);
+    transform: translateY(-2px);
+}
+
+.card-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.card-img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.fk-product-card:hover .card-img-wrap img {
+    transform: scale(1.05);
+}
+
+.wishlist-heart {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 18px;
+    color: #c2c2c2;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.wishlist-heart:hover {
+    transform: scale(1.2);
+}
+
+.wishlist-heart.active {
+    color: #ff4343;
+}
+
+.card-brand {
+    font-size: 11px;
+    color: #878787;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.rating-badge {
+    background: var(--fk-green);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.rating-count-text {
+    font-size: 11px;
+    color: #878787;
+}
+
+.assured-badge {
+    font-size: 11px;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--fk-blue);
+    margin-left: auto;
+}
+
+.assured-badge .f-text {
+    color: var(--fk-blue);
+}
+
+.price-row-card {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.curr-price {
+    font-size: 16px;
+    font-weight: 800;
+    color: #212121;
+}
+
+.orig-price {
+    font-size: 12px;
+    color: #878787;
+    text-decoration: line-through;
+}
+
+.disc-percent {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--fk-green);
+}
+
+.card-delivery-text {
+    font-size: 11px;
+    color: #26a541;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.card-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+}
+
+.card-cart-btn {
+    flex: 1;
+    background: var(--fk-blue);
+    color: white;
+    border: none;
+    padding: 7px 0;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.card-cart-btn:hover {
+    background: var(--fk-dark-blue);
+}
+
+/* ==========================================================
+   6. DYNAMIC RESULTS GRID (FOR SEARCH & CATEGORY FILTERING)
+   ========================================================== */
+.dynamic-results-section {
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    box-shadow: var(--fk-card-shadow);
+}
+
+.section-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.section-top-bar h2 {
+    font-size: 20px;
+    color: #212121;
+}
+
+.results-count {
+    font-size: 13px;
+    color: #878787;
+    margin-left: 8px;
+}
+
+.sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.sort-bar select {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    outline: none;
+    font-size: 13px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+/* ==========================================================
+   7. PRODUCT DETAIL QUICK-VIEW MODAL
+   ========================================================== */
+.product-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.product-modal-card {
+    background: white;
+    width: 100%;
+    max-width: 950px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    position: relative;
+    padding: 30px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #f1f3f6;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.modal-close-btn:hover {
+    background: #e0e0e0;
+    color: #111;
+}
+
+.modal-content-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 30px;
+}
+
+.modal-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-img-wrap {
+    width: 100%;
+    height: 340px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 15px;
+}
+
+.modal-img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.modal-wishlist-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 22px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.modal-wishlist-heart.active {
+    color: #ff4343;
+}
+
+.modal-cta-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn-modal-cart {
+    flex: 1;
+    background: var(--fk-cart-yellow);
+    color: white;
+    border: none;
+    padding: 14px 10px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-modal-cart:hover {
+    background: #e68f00;
+}
+
+.btn-modal-buy {
+    flex: 1;
+    background: var(--fk-orange);
+    color: white;
+    border: none;
+    padding: 14px 10px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-modal-buy:hover {
+    background: var(--fk-dark-orange);
+}
+
+.modal-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-brand-tag {
+    font-size: 13px;
+    color: #878787;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #212121;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.modal-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.reviews-count {
+    font-size: 13px;
+    color: #878787;
+    font-weight: 600;
+}
+
+.modal-price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-current-price {
+    font-size: 28px;
+    font-weight: 800;
+    color: #212121;
+}
+
+.modal-original-price {
+    font-size: 16px;
+    color: #878787;
+    text-decoration: line-through;
+}
+
+.modal-discount {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--fk-green);
+}
+
+/* Bank Offers */
+.modal-bank-offers {
+    background: #fbfbfb;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+}
+
+.modal-bank-offers strong {
+    font-size: 13px;
+    color: #212121;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.modal-bank-offers ul {
+    list-style: none;
+}
+
+.modal-bank-offers li {
+    font-size: 12px;
+    color: #212121;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-bank-offers li i {
+    color: var(--fk-green);
+}
+
+/* Pincode Checker */
+.delivery-check-box {
+    margin-bottom: 16px;
+}
+
+.del-input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--fk-blue);
+    padding-bottom: 4px;
+    max-width: 280px;
+}
+
+.del-input-row i {
+    color: var(--fk-blue);
+    font-size: 16px;
+}
+
+.del-input-row input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    flex: 1;
+}
+
+.del-input-row button {
+    background: none;
+    border: none;
+    color: var(--fk-blue);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.pincode-result {
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* Description & Specs */
+.modal-desc-box {
+    margin-bottom: 16px;
+}
+
+.modal-desc-box h4, .modal-specs-box h4 {
+    font-size: 14px;
+    color: #212121;
+    margin-bottom: 6px;
+}
+
+.modal-desc-box p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.specs-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.specs-table td.spec-name {
+    color: #878787;
+    width: 35%;
+}
+
+.specs-table td.spec-val {
+    color: #212121;
+    font-weight: 500;
+}
+
+/* ==========================================================
+   8. TOAST NOTIFICATIONS
+   ========================================================== */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: #212121;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+}
+
+.toast.success {
+    border-left: 4px solid var(--fk-green);
+}
+
+.toast.info {
+    border-left: 4px solid var(--fk-blue);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================
+   9. AUTHENTIC FLIPKART FOOTER
+   ========================================================== */
+.fk-footer {
+    background-color: #172337;
+    color: white;
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+.footer-top-links {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 40px 20px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    border-bottom: 1px solid #454d5e;
+}
+
+.f-col h4 {
+    color: #878787;
+    font-size: 12px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.f-col a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 7px;
+    font-size: 12px;
+}
+
+.f-col a:hover {
+    text-decoration: underline;
+}
+
+.f-address-col p {
+    color: #dcdcdc;
+    line-height: 1.6;
+    font-size: 12px;
+}
+
+.footer-bottom-strip {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: #e0e0e0;
+}
+
+.strip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.strip-item i {
+    color: var(--fk-yellow);
+}
+
+.payment-cards {
+    font-size: 22px;
+    display: flex;
+    gap: 12px;
+    color: #a0a0a0;
+}
+
+/* ==========================================================
+   10. RESPONSIVE DESIGN
+   ========================================================== */
+@media (max-width: 900px) {
+    .modal-content-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-img-wrap {
+        height: 240px;
+    }
+    .deal-section {
+        flex-direction: column;
+    }
+    .deal-card-left {
+        width: 100%;
+        padding: 16px;
+    }
+    .header-nav .seller-link, .header-nav .nav-dropdown-item {
+        display: none;
+    }
+}

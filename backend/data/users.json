@@ -1,0 +1,10 @@
+[
+  {
+    "id": "demo_user_1",
+    "fullName": "Prithvi Poojari",
+    "email": "prithvi@shopkart.com",
+    "mobile": "9876543210",
+    "password":  "console.log(require('bcryptjs').hashSync('password123', 10))",
+    "createdAt": "2026-09-14T08:00:00.000Z"
+  }
+]

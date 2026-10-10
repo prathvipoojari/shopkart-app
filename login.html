@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ShopKart Demo</title>
+
+    <!-- Login CSS -->
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+ <div class="login-box">
+
+    <h1>🛒 ShopKart</h1>
+
+    <h2>Welcome Back 👋</h2>
+
+    <p>Login to continue shopping</p>
+
+    <p style="font-size:12px; color:#b26a00; background:#fff4e0; border-radius:6px; padding:8px; margin:8px 0;">
+        This is a demo project. Please do not use your real email or passwords.
+    </p>
+
+    <div id="authMessage" class="auth-message" style="display:none;"></div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label for="password">Password</label>
+
+    <div class="password-container">
+        <input type="password" id="password" placeholder="Enter your password">
+        <i class="fa-solid fa-eye" id="eye"></i>
+    </div>
+
+    <a href="#">Forgot Password?</a>
+
+    <button class="login-btn" id="loginBtn">Login</button>
+
+    <div class="demo-box" style="background:#e8f0fe; border:1px solid #cce0ff; border-radius:8px; padding:12px; margin-top:15px; font-size:13px; color:#1a73e8; text-align:left;">
+        <strong>💡 Demo Credentials:</strong><br>
+        Email: <code>prithvi@shopkart.com</code><br>
+        Password: <code>password123</code><br>
+        <button id="fillDemoBtn" type="button" style="margin-top:8px; width:100%; background:#1a73e8; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:13px; font-weight:bold;">⚡ Auto-Fill Demo Credentials</button>
+    </div>
+
+    <hr>
+
+    <p class="or-text">OR</p>
+
+    <button class="google-btn" type="button" disabled style="opacity:0.6; cursor:not-allowed;">
+        Social login (not available in demo)
+    </button>
+
+    <p class="register-text">
+        Don't have an account?
+        <a href="register.html">Register Now</a>
+    </p>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/script.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>

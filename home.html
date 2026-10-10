@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopKart Demo - Practice Shopping Site</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= TOP HEADER ================= -->
+    <header class="fk-header">
+        <div class="header-container">
+            <!-- Brand Logo -->
+            <a href="home.html" class="brand-logo">
+                <span class="logo-main">ShopKart</span>
+                <span class="logo-sub">Demo Store</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" onsubmit="event.preventDefault();">
+                    <input type="text" id="searchInput" placeholder="Search for products, brands and more" autocomplete="off">
+                    <button type="submit" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <!-- Search Auto-suggest dropdown -->
+                <div class="search-suggestions" id="searchSuggestions" style="display: none;"></div>
+            </div>
+
+            <!-- Header Actions / Nav items -->
+            <div class="header-nav">
+                <!-- User Account / Login Button -->
+                <div class="nav-account-slot" id="navAccountSlot">
+                    <a href="login.html" class="fk-login-btn" id="loginBtnNav">Login</a>
+                    <!-- Hover Dropdown for Guest -->
+                    <div class="account-dropdown guest-menu" id="guestDropdown">
+                        <div class="menu-header">
+                            <span>New customer?</span>
+                            <a href="register.html" class="signup-link">Sign Up</a>
+                        </div>
+                        <hr>
+                        <a href="login.html"><i class="fa-regular fa-user"></i> My Profile</a>
+                        <a href="orders.html"><i class="fa-solid fa-box-open"></i> Orders</a>
+                        <a href="wishlist.html"><i class="fa-regular fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa-solid fa-ticket"></i> Rewards</a>
+                        <a href="#"><i class="fa-solid fa-gift"></i> Gift Cards</a>
+                    </div>
+                </div>
+
+                <!-- Become a Seller -->
+                <a href="#" class="seller-link">Become a Seller</a>
+
+                <!-- More Options Dropdown -->
+                <div class="nav-dropdown-item">
+                    <span class="dropdown-trigger">More <i class="fa-solid fa-chevron-down caret-icon"></i></span>
+                    <div class="more-dropdown">
+                        <a href="#"><i class="fa-solid fa-bell"></i> Notification Preferences</a>
+                        <a href="#"><i class="fa-solid fa-headset"></i> Customer Care</a>
+                        <a href="#"><i class="fa-solid fa-arrow-trend-up"></i> Advertise</a>
+                        <a href="#"><i class="fa-solid fa-mobile-screen"></i> Download App</a>
+                    </div>
+                </div>
+
+                <!-- Cart Button -->
+                <a href="cart.html" class="cart-btn-header">
+                    <div class="cart-badge-wrap">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cartCount">0</span>
+                    </div>
+                    <span class="cart-label">Cart</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= CATEGORY BAR ================= -->
+    <nav class="category-nav">
+        <div class="category-nav-inner">
+            <div class="cat-pill active" data-category="all">
+                <div class="cat-icon-wrap">🛍️</div>
+                <span>All Offers</span>
+            </div>
+            <div class="cat-pill" data-category="Mobiles">
+                <div class="cat-icon-wrap">📱</div>
+                <span>Mobiles</span>
+            </div>
+            <div class="cat-pill" data-category="Electronics">
+                <div class="cat-icon-wrap">💻</div>
+                <span>Electronics</span>
+            </div>
+            <div class="cat-pill" data-category="Fashion">
+                <div class="cat-icon-wrap">👕</div>
+                <span>Fashion</span>
+            </div>
+            <div class="cat-pill" data-category="Appliances">
+                <div class="cat-icon-wrap">📺</div>
+                <span>Appliances</span>
+            </div>
+            <div class="cat-pill" data-category="Home">
+                <div class="cat-icon-wrap">🛋️</div>
+                <span>Home & Furniture</span>
+            </div>
+            <div class="cat-pill" data-category="Beauty">
+                <div class="cat-icon-wrap">💄</div>
+                <span>Beauty & Personal</span>
+            </div>
+            <div class="cat-pill" data-category="Grocery">
+                <div class="cat-icon-wrap">🛒</div>
+                <span>Grocery</span>
+            </div>
+            <div class="cat-pill" data-category="Travel">
+                <div class="cat-icon-wrap">✈️</div>
+                <span>Travel</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= MAIN CONTENT CONTAINER ================= -->
+    <main class="page-body">
+
+        <!-- HERO PROMO CAROUSEL BANNER -->
+        <section class="banner-carousel-wrap">
+            <button class="banner-arrow prev-arrow" id="bannerPrev"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="banner-slide" id="bannerSlide">
+                <img id="bannerImage" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600&auto=format&fit=crop&q=80" alt="ShopKart demo sale banner" />
+                <div class="banner-overlay-info">
+                    <span class="sale-tag">MEGA SALE DAYS</span>
+                    <h2>Mega Electronics & Smartphone Fest</h2>
+                    <p>Demo offers only. No real discounts or products.</p>
+                    <button class="shop-banner-btn" onclick="scrollToSection('electronicsSection')">Shop Now</button>
+                </div>
+            </div>
+            <button class="banner-arrow next-arrow" id="bannerNext"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="banner-dots" id="bannerDots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- VALUE TRUST BADGES STRIP -->
+        <section class="trust-strip">
+            <div class="trust-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <strong>Quality Products</strong>
+                    <span>Sample items for demo</span>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-rotate-left"></i>
+                <div>
+                    <strong>Easy Returns</strong>
+                    <span>Sample return policy</span>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <strong>Fast Delivery</strong>
+                    <span>Sample delivery text</span>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <div>
+                    <strong>Secure Checkout</strong>
+                    <span>Demo only, no real payments</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILTERED PRODUCT RESULTS (Shows when filtering or searching) -->
+        <section class="dynamic-results-section" id="dynamicResultsSection" style="display:none;">
+            <div class="section-top-bar">
+                <div>
+                    <h2 id="dynamicResultsTitle">Showing Products</h2>
+                    <span id="dynamicResultsCount" class="results-count">0 items</span>
+                </div>
+                <div class="sort-bar">
+                    <label>Sort By:</label>
+                    <select id="sortSelect" onchange="handleSortChange(this.value)">
+                        <option value="popularity">Popularity</option>
+                        <option value="low-to-high">Price -- Low to High</option>
+                        <option value="high-to-low">Price -- High to Low</option>
+                        <option value="rating">Customer Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- SECTION 1: BEST OF ELECTRONICS -->
+        <section class="deal-section" id="electronicsSection">
+            <div class="deal-card-left electronics-bg">
+                <div class="deal-info">
+                    <h3>Best of Electronics</h3>
+                    <p>Laptops, Audio, Smartwatches</p>
+                    <button class="view-all-btn" onclick="filterCategory('Electronics')">VIEW ALL</button>
+                </div>
+            </div>
+            <div class="deal-card-right">
+                <div class="horizontal-scroll" id="electronicsRow">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TOP DEALS ON SMARTPHONES -->
+        <section class="deal-section" id="mobilesSection">
+            <div class="deal-card-left mobiles-bg">
+                <div class="deal-info">
+                    <h3>Top Deals on Smartphones</h3>
+                    <p>Flagships & 5G Phones</p>
+                    <button class="view-all-btn" onclick="filterCategory('Mobiles')">VIEW ALL</button>
+                </div>
+            </div>
+            <div class="deal-card-right">
+                <div class="horizontal-scroll" id="mobilesRow">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TRENDING FASHION & FOOTWEAR -->
+        <section class="deal-section" id="fashionSection">
+            <div class="deal-card-left fashion-bg">
+                <div class="deal-info">
+                    <h3>Trending Fashion</h3>
+                    <p>Sample fashion deals</p>
+                    <button class="view-all-btn" onclick="filterCategory('Fashion')">VIEW ALL</button>
+                </div>
+            </div>
+            <div class="deal-card-right">
+                <div class="horizontal-scroll" id="fashionRow">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: APPLIANCES & HOME ESSENTIALS -->
+        <section class="deal-section" id="appliancesSection">
+            <div class="deal-card-left appliances-bg">
+                <div class="deal-info">
+                    <h3>Home & Kitchen Appliances</h3>
+                    <p>Top Rated Energy Savers</p>
+                    <button class="view-all-btn" onclick="filterCategory('Appliances')">VIEW ALL</button>
+                </div>
+            </div>
+            <div class="deal-card-right">
+                <div class="horizontal-scroll" id="appliancesRow">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= PRODUCT QUICK-VIEW MODAL ================= -->
+    <div class="product-modal-backdrop" id="productModal" style="display: none;">
+        <div class="product-modal-card">
+            <button class="modal-close-btn" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+
+            <div class="modal-content-grid">
+                <!-- Left: Product Image & Action Buttons -->
+                <div class="modal-left">
+                    <div class="modal-img-wrap">
+                        <img id="modalProductImg" src="" alt="Product Image">
+                        <i class="fa-regular fa-heart modal-wishlist-heart" id="modalWishlistHeart"></i>
+                    </div>
+                    <div class="modal-cta-row">
+                        <button class="btn-modal-cart" id="modalAddToCartBtn">
+                            <i class="fa-solid fa-cart-shopping"></i> ADD TO CART
+                        </button>
+                        <button class="btn-modal-buy" id="modalBuyNowBtn">
+                            <i class="fa-solid fa-bolt"></i> BUY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Product Details & Specs -->
+                <div class="modal-right">
+                    <span class="modal-brand-tag" id="modalBrand">BRAND</span>
+                    <h2 class="modal-title" id="modalTitle">Product Title</h2>
+
+                    <!-- Rating & Reviews -->
+                    <div class="modal-rating-row">
+                        <span class="rating-badge" id="modalRating">4.5 ★</span>
+                        <span class="reviews-count" id="modalReviews">1,420 Ratings & Reviews</span>
+                        <span class="assured-badge">Quality Checked</span>
+                    </div>
+
+                    <!-- Price Block -->
+                    <div class="modal-price-block">
+                        <span class="modal-current-price" id="modalPrice">₹0</span>
+                        <span class="modal-original-price" id="modalOriginalPrice">₹0</span>
+                        <span class="modal-discount" id="modalDiscount">0% off</span>
+                    </div>
+
+                    <!-- Demo Offers -->
+                    <div class="modal-bank-offers">
+                        <strong>Available Offers:</strong>
+                        <ul>
+                            <li><i class="fa-solid fa-tag"></i> <span id="modalBankOffer">Demo offer: sample cashback</span></li>
+                            <li><i class="fa-solid fa-tag"></i> Demo offer: sample instant discount.</li>
+                            <li><i class="fa-solid fa-tag"></i> Demo offer: sample special price.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pincode Delivery Check -->
+                    <div class="delivery-check-box">
+                        <div class="del-input-row">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <input type="text" id="pincodeInput" placeholder="Enter Delivery Pincode" maxlength="6">
+                            <button type="button" onclick="checkPincode()">Check</button>
+                        </div>
+                        <div id="pincodeResult" class="pincode-result"></div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="modal-desc-box">
+                        <h4>Description:</h4>
+                        <p id="modalDescription">Detailed product description.</p>
+                    </div>
+
+                    <!-- Specifications Table -->
+                    <div class="modal-specs-box">
+                        <h4>Specifications:</h4>
+                        <table class="specs-table" id="modalSpecsTable">
+                            <!-- Injected by JS -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TOAST NOTIFICATION ================= -->
+    <div class="toast-container" id="toastBox"></div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="fk-footer">
+        <div class="footer-top-links">
+            <div class="f-col">
+                <h4>ABOUT</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+            <div class="f-col">
+                <h4>HELP</h4>
+                <a href="#">Payments</a>
+                <a href="#">Shipping</a>
+                <a href="#">Cancellation & Returns</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="f-col">
+                <h4>POLICY</h4>
+                <a href="#">Terms Of Use</a>
+                <a href="#">Security</a>
+                <a href="#">Privacy</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="f-col f-address-col">
+                <h4>About this site:</h4>
+                <p>ShopKart is a demo project made for learning.<br>
+                No real products are sold and no payments are taken.<br>
+                Please do not enter real personal details.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom-strip">
+            <div class="strip-item"><i class="fa-solid fa-bag-shopping"></i> <span>Become a Seller</span></div>
+            <div class="strip-item"><i class="fa-solid fa-star"></i> <span>Advertise</span></div>
+            <div class="strip-item"><i class="fa-solid fa-gift"></i> <span>Gift Cards</span></div>
+            <div class="strip-item"><i class="fa-solid fa-circle-question"></i> <span>Help Center</span></div>
+            <div class="strip-copy">© 2026 ShopKart Demo - Learning project</div>
+            <div class="payment-cards">
+                <i class="fa-solid fa-credit-card"></i>
+                <i class="fa-solid fa-building-columns"></i>
+                <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

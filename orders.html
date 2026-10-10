@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - ShopKart Demo</title>
+
+    <link rel="stylesheet" href="css/wishlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fk-header">
+        <div class="header-container">
+            <a href="home.html" class="brand-logo">
+                <span class="logo-main">ShopKart</span>
+                <span class="logo-sub">Demo Store</span>
+            </a>
+
+            <div class="nav-right-links">
+                <a href="home.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="orders.html"><i class="fa-solid fa-box-open"></i> Orders</a>
+                <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+                <div class="user-profile-slot"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= WISHLIST PAGE LAYOUT ================= -->
+    <main class="wishlist-page-body">
+        <!-- Left Sidebar (User Profile Navigation) -->
+        <aside class="profile-sidebar">
+            <div class="user-greeting-card">
+                <div class="avatar-icon"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <span class="greeting-sub">Hello,</span>
+                    <strong id="sidebarUserName">Guest</strong>
+                </div>
+            </div>
+
+            <div class="sidebar-menu-card">
+                <div class="menu-section">
+                    <h4><i class="fa-solid fa-box-open"></i> MY ORDERS</h4>
+                    <a href="orders.html">View All Orders</a>
+                </div>
+                <hr>
+                <div class="menu-section">
+                    <h4><i class="fa-solid fa-user-gear"></i> ACCOUNT SETTINGS</h4>
+                    <a href="#">Profile Information</a>
+                    <a href="#">Manage Addresses</a>
+                </div>
+                <hr>
+                <div class="menu-section">
+                    <h4><i class="fa-solid fa-folder-open"></i> MY STUFF</h4>
+                    <a href="wishlist.html" class="active"><i class="fa-solid fa-heart"></i> My Wishlist</a>
+                    <a href="#"><i class="fa-solid fa-bell"></i> All Notifications</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right: Wishlist Content -->
+        <section class="wishlist-main-content">
+            <div class="wishlist-header">
+                <h2>My Wishlist <span id="wishlistCount">(0)</span></h2>
+            </div>
+
+            <div id="wishlistItems" class="wishlist-items-list">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="fk-footer" style="margin-top:auto;">
+        <div class="footer-bottom-strip">
+            <div class="strip-item"><i class="fa-solid fa-shield-halved"></i> <span>Demo products only</span></div>
+            <div class="strip-item"><i class="fa-solid fa-arrow-rotate-left"></i> <span>Sample return policy</span></div>
+            <div class="strip-item"><i class="fa-solid fa-truck-fast"></i> <span>Sample shipping info</span></div>
+            <div class="strip-copy">© 2026 ShopKart Demo - Learning project</div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/wishlist.js"></script>
+
+</body>
+</html>
