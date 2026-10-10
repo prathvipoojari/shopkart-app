@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopKart</title>
+    <title>ShopKart Demo</title>
 
     <!-- Connect CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -12,20 +12,30 @@
 
     <h1>Welcome to ShopKart</h1>
 
-    <p>Your one-stop shopping destination.</p>
+    <p>Your one-stop shopping destination (demo project).</p>
 
     <button onclick="showPopup()">Shop Now</button>
 
     <!-- Custom Popup -->
     <div id="popup">
         <h2>🛒 Welcome!</h2>
-        <p>Happy Shopping, Prithvi 😊</p>
+        <p>Happy Shopping! 😊</p>
 
         <a href="home.html" style="display:inline-block; margin-right:10px; background:#fb641b; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">Enter Store 🛍️</a>
         <button onclick="closePopup()">Close</button>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        function showPopup() {
+            var popup = document.getElementById('popup');
+            if (popup) popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            var popup = document.getElementById('popup');
+            if (popup) popup.style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
